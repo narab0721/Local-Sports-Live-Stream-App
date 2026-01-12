@@ -1,0 +1,497 @@
+```html
+
+
+
+  
+  
+  Score Overlay
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .overlay-container {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+
+    /* Score Ticker */
+    .score-ticker {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .score-ticker.top {
+      top: 20px;
+    }
+
+    .score-ticker.bottom {
+      bottom: 20px;
+    }
+
+    .team-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .team-logo {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-center;
+      overflow: hidden;
+    }
+
+    .team-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .team-info {
+      text-align: center;
+    }
+
+    .team-name {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .team-score {
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+    }
+
+    .match-info {
+      padding: 0 20px;
+      border-left: 2px solid rgba(255, 255, 255, 0.2);
+      border-right: 2px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .period {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+    }
+
+    .timer {
+      font-size: 20px;
+      font-weight: 900;
+      color: #10b981;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Sponsor Banner */
+    .sponsor-banner {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .sponsor-banner.corner {
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 60px;
+    }
+
+    .sponsor-banner.side {
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 150px;
+      height: 80px;
+    }
+
+    .sponsor-banner.bottom-banner {
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 60px;
+    }
+
+    .sponsor-logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Event Notification */
+    .event-notification {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, #1e293b, #334155);
+      padding: 24px 48px;
+      border-radius: 16px;
+      text-align: center;
+      border: 3px solid;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      animation: eventPop 0.5s ease-out;
+      min-width: 400px;
+    }
+
+    .event-notification.goal {
+      border-color: #10b981;
+    }
+
+    .event-notification.card {
+      border-color: #fbbf24;
+    }
+
+    .event-notification.substitution {
+      border-color: #3b82f6;
+    }
+
+    .event-icon {
+      font-size: 64px;
+      margin-bottom: 12px;
+    }
+
+    .event-text {
+      font-size: 28px;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .event-details {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Player Stats Bar */
+    .player-stats-bar {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .player-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #475569;
+      overflow: hidden;
+    }
+
+    .player-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .player-details {
+      color: white;
+    }
+
+    .player-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .player-number {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .player-stats-grid {
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 900;
+      color: white;
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes eventPop {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  
+
+
+  
+    
+    
+      
+        
+          
+        
+        
+          Team A
+          0
+        
+      
+
+      
+        Q1
+        00:00
+      
+
+      
+        
+          Team B
+          0
+        
+        
+          
+        
+      
+    
+
+    
+    
+      
+    
+
+    
+    
+      ⚽
+      GOAL!
+      Player Name #10
+    
+
+    
+    
+      
+        
+      
+      
+        Player Name
+        #10
+      
+      
+        
+          Goals
+          2
+        
+        
+          Assists
+          1
+        
+        
+          Cards
+          1 🟨
+        
+      
+    
+  
+
+  
+    const { ipcRenderer } = require('electron');
+
+    // Listen for score updates
+    ipcRenderer.on('update-score', (event, data) => {
+      updateScore(data);
+    });
+
+    // Listen for settings updates
+    ipcRenderer.on('update-settings', (event, settings) => {
+      applySettings(settings);
+    });
+
+    // Listen for event notifications
+    ipcRenderer.on('show-event', (event, eventData) => {
+      showEvent(eventData);
+    });
+
+    // Listen for sponsor rotation
+    ipcRenderer.on('show-sponsor', (event, sponsor) => {
+      showSponsor(sponsor);
+    });
+
+    function updateScore(data) {
+      document.getElementById('team-a-name').textContent = data.teamA.name;
+      document.getElementById('team-a-score').textContent = data.teamA.score;
+      document.getElementById('team-b-name').textContent = data.teamB.name;
+      document.getElementById('team-b-score').textContent = data.teamB.score;
+      document.getElementById('period').textContent = data.period;
+      document.getElementById('timer').textContent = data.timer;
+
+      if (data.teamA.logoPath) {
+        document.getElementById('team-a-logo').src = data.teamA.logoPath;
+      }
+      if (data.teamB.logoPath) {
+        document.getElementById('team-b-logo').src = data.teamB.logoPath;
+      }
+
+      document.getElementById('score-ticker').classList.remove('hidden');
+    }
+
+    function applySettings(settings) {
+      const ticker = document.getElementById('score-ticker');
+      ticker.classList.remove('top', 'bottom');
+      ticker.classList.add(settings.position);
+
+      if (!settings.showScore) {
+        ticker.classList.add('hidden');
+      } else {
+        ticker.classList.remove('hidden');
+      }
+    }
+
+    function showEvent(eventData) {
+      const notification = document.getElementById('event-notification');
+      const icon = document.getElementById('event-icon');
+      const text = document.getElementById('event-text');
+      const details = document.getElementById('event-details');
+
+      notification.className = 'event-notification';
+
+      switch (eventData.type) {
+        case 'goal':
+          notification.classList.add('goal');
+          icon.textContent = '⚽';
+          text.textContent = 'GOAL!';
+          break;
+        case 'yellow-card':
+          notification.classList.add('card');
+          icon.textContent = '🟨';
+          text.textContent = 'YELLOW CARD';
+          break;
+        case 'red-card':
+          notification.classList.add('card');
+          icon.textContent = '🟥';
+          text.textContent = 'RED CARD';
+          break;
+        case 'substitution':
+          notification.classList.add('substitution');
+          icon.textContent = '⇄';
+          text.textContent = 'SUBSTITUTION';
+          break;
+      }
+
+      details.textContent = `${eventData.playerName} #${eventData.playerNumber}`;
+      notification.classList.remove('hidden');
+
+      setTimeout(() => {
+        notification.classList.add('hidden');
+      }, 3000);
+    }
+
+    function showSponsor(sponsor) {
+      const banner = document.getElementById('sponsor-banner');
+      const logo = document.getElementById('sponsor-logo');
+
+      banner.className = 'sponsor-banner';
+      banner.classList.add(sponsor.position);
+
+      logo.src = sponsor.logoPath;
+      banner.classList.remove('hidden');
+
+      setTimeout(() => {
+        banner.classList.add('hidden');
+      }, sponsor.displayDuration);
+    }
+  
+
+
+```
