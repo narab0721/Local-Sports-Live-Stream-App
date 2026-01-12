@@ -1,4 +1,4 @@
-```json
+json
 {
   "name": "local-sports-stream-pro",
   "version": "3.0.0",
@@ -15,7 +15,6 @@
     "express": "^4.18.2",
     "obs-websocket-js": "^5.0.5",
     "socket.io": "^4.6.1",
-    "better-sqlite3": "^9.2.2",
     "uuid": "^9.0.1",
     "multer": "^1.4.5-lts.1",
     "sharp": "^0.33.1",
@@ -26,4 +25,4 @@
     "concurrently": "^8.2.2"
   }
 }
-```
+
