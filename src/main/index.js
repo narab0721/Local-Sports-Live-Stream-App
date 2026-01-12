@@ -1,4 +1,4 @@
-```javascript
+javascript
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs').promises;
@@ -219,4 +219,4 @@ function setupIPCHandlers() {
     }
   });
 }
-```
+
