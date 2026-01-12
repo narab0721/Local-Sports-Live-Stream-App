@@ -1,0 +1,54 @@
+{
+  "sports": {
+    "football": {
+      "name": "Football",
+      "icon": "⚽",
+      "scoreLabel": "Goals",
+      "periods": ["1st Half", "2nd Half", "ET", "Penalties"],
+      "timerFormat": "countdown",
+      "defaultDuration": "45:00"
+    },
+    "basketball": {
+      "name": "Basketball",
+      "icon": "🏀",
+      "scoreLabel": "Points",
+      "periods": ["Q1", "Q2", "Q3", "Q4", "OT"],
+      "timerFormat": "countdown",
+      "defaultDuration": "12:00"
+    },
+    "cricket": {
+      "name": "Cricket",
+      "icon": "🏏",
+      "scoreLabel": "Runs/Wickets",
+      "periods": ["1st Innings", "2nd Innings", "Super Over"],
+      "timerFormat": "overs",
+      "showOvers": true,
+      "showWickets": true
+    },
+    "volleyball": {
+      "name": "Volleyball",
+      "icon": "🏐",
+      "scoreLabel": "Points",
+      "periods": ["Set 1", "Set 2", "Set 3", "Set 4", "Set 5"],
+      "maxScore": 25,
+      "mustWinByTwo": true
+    },
+    "tennis": {
+      "name": "Tennis",
+      "icon": "🎾",
+      "scoreLabel": "Games/Sets",
+      "periods": ["Set 1", "Set 2", "Set 3", "Set 4", "Set 5"],
+      "scoreFormat": "tennis",
+      "showGames": true,
+      "showSets": true
+    },
+    "badminton": {
+      "name": "Badminton",
+      "icon": "🏸",
+      "scoreLabel": "Points",
+      "periods": ["Game 1", "Game 2", "Game 3"],
+      "maxScore": 21,
+      "mustWinByTwo": true
+    }
+  }
+}
