@@ -1,4 +1,4 @@
-```javascript
+javascript
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 const fs = require('fs').promises;
@@ -90,4 +90,4 @@ class SponsorManager {
 }
 
 module.exports = SponsorManager;
-```
+
