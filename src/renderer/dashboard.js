@@ -1,5 +1,3 @@
-// Add these sections to the dashboard render function
-
 function renderTeamManagement() {
   return `
     
@@ -86,10 +84,6 @@ function renderTeamManagement() {
   `;
 }
 
-
-## 8. Player Roster Management UI
-
-javascript
 function renderPlayerRoster(teamId) {
   const team = state.teams.find(t => t.id === teamId);
   const players = state.players.filter(p => p.teamId === teamId);
@@ -265,13 +259,6 @@ function renderPlayerRoster(teamId) {
     
   `;
 }
-
-
-
-
-## 9. Sponsor Management UI
-
-javascript
 function renderSponsorManagement() {
   return `
     
@@ -375,6 +362,3 @@ function renderSponsorManagement() {
     
   `;
 }
-
-
-
