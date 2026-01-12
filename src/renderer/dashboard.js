@@ -1,4 +1,3 @@
-javascript
 // Add these sections to the dashboard render function
 
 function renderTeamManagement() {
